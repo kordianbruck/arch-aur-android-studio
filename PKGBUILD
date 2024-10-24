@@ -7,6 +7,7 @@
 # Contributor: Philippe Hürlimann <p@hurlimann.org>
 # Contributor: Julian Raufelder <aur@raufelder.com>
 # Contributor: Dhina17 <dhinalogu@gmail.com>
+# Contributor: nato-re <alvare.renato@gmail.com>
 # Maintainer: Kordian Bruck <k@bruck.me>
 
 pkgname=android-studio
@@ -17,7 +18,7 @@ arch=('i686' 'x86_64')
 url="https://developer.android.com/"
 license=('APACHE')
 makedepends=()
-depends=('alsa-lib' 'freetype2' 'libxrender' 'libxtst' 'which')
+depends=('alsa-lib' 'freetype2' 'libxrender' 'libxtst' 'which' 'libbsd')
 optdepends=('gtk2: GTK+ look and feel'
             'libgl: emulator support'
             'ncurses5-compat-libs: native debugger support')

@@ -11,6 +11,7 @@ pkgbase = android-studio
 	depends = libxrender
 	depends = libxtst
 	depends = which
+	depends = libbsd
 	optdepends = gtk2: GTK+ look and feel
 	optdepends = libgl: emulator support
 	optdepends = ncurses5-compat-libs: native debugger support
