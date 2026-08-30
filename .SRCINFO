@@ -5,6 +5,7 @@ pkgbase = android-studio
 	url = https://developer.android.com/
 	arch = i686
 	arch = x86_64
+	arch = aarch64
 	license = APACHE
 	depends = alsa-lib
 	depends = freetype2
@@ -21,5 +22,7 @@ pkgbase = android-studio
 	sha256sums = 5bd5ee5d6e747b13f82fba3241380bd358cc2f4a847815c8e860757df13dc35f
 	sha256sums = 73cd2dde1d0f99aaba5baad1e2b91c834edd5db3c817f6fb78868d102360d3c4
 	sha256sums = 9a7563f7fb88c9a83df6cee9731660dc73a039ab594747e9e774916275b2e23e
+	source_aarch64 = https://cache-redirector.jetbrains.com/intellij-jbr/jbr_jcef-21.0.11-linux-aarch64-b1163.116.tar.gz
+	sha512sums_aarch64 = c39251cbafdc7a8433ed4b5136500a3530845191bc5568cfc64e199b68c6e457cf973644116dc9beb172a95ef9214d3f3a19ba1bb9dd6f0af2207c2373995d0f
 
 pkgname = android-studio

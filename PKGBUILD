@@ -12,9 +12,11 @@
 pkgname=android-studio
 pkgver=2026.1.3.8
 _vername="quail3-patch1"
+_jbrpkgver="21.0.11"
+_jbrvername="b1163.116"
 pkgrel=1
 pkgdesc="The official Android IDE (Stable branch)"
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'aarch64')
 url="https://developer.android.com/"
 license=('APACHE')
 makedepends=()
@@ -30,6 +32,9 @@ sha256sums=('5bd5ee5d6e747b13f82fba3241380bd358cc2f4a847815c8e860757df13dc35f'
             '73cd2dde1d0f99aaba5baad1e2b91c834edd5db3c817f6fb78868d102360d3c4'
             '9a7563f7fb88c9a83df6cee9731660dc73a039ab594747e9e774916275b2e23e')
 
+source_aarch64=("https://cache-redirector.jetbrains.com/intellij-jbr/jbr_jcef-$_jbrpkgver-linux-aarch64-$_jbrvername.tar.gz")
+sha512sums_aarch64=('c39251cbafdc7a8433ed4b5136500a3530845191bc5568cfc64e199b68c6e457cf973644116dc9beb172a95ef9214d3f3a19ba1bb9dd6f0af2207c2373995d0f')
+
 if [ "$CARCH" = "i686" ]; then
     depends+=('java-environment')
 fi
@@ -39,8 +44,14 @@ package() {
 
   # Install the application
   install -d $pkgdir/{opt/$pkgname,usr/bin}
-  cp -a bin lib jbr plugins license LICENSE.txt build.txt product-info.json $pkgdir/opt/$pkgname
-  ln -s /opt/android-studio/bin/studio $pkgdir/usr/bin/$pkgname
+  if [ "$CARCH" = "aarch64" ]; then
+    cp -a bin lib plugins license LICENSE.txt build.txt product-info.json $pkgdir/opt/$pkgname
+    mv $srcdir/jbr_jcef-$_jbrpkgver-linux-aarch64-$_jbrvername $pkgdir/opt/$pkgname/jbr
+    ln -s /opt/android-studio/bin/studio.sh $pkgdir/usr/bin/$pkgname
+  else
+    cp -a bin lib jbr plugins license LICENSE.txt build.txt product-info.json $pkgdir/opt/$pkgname
+    ln -s /opt/android-studio/bin/studio $pkgdir/usr/bin/$pkgname
+  fi
 
   # Copy licenses
   install -Dm644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.txt"
