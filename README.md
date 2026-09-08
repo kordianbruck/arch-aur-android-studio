@@ -16,7 +16,7 @@ To build the package by hand:
 
 ## Packaging notes
 
-- Android Studio bundles its own Qt 5, and that build has no Wayland plugin. To prevent a crash on Wayland sessions, the desktop entry sets `QT_QPA_PLATFORM=xcb`.
+- The IDE is a Java program and does not use Qt. The emulator, which the SDK Manager downloads separately, bundles its own Qt 6 build without a Wayland plugin. If the session sets `QT_QPA_PLATFORM=wayland`, the emulator aborts at startup with a Qt platform plugin error. The desktop entry sets `QT_QPA_PLATFORM=wayland;xcb`: programs that support Wayland use it, and the emulator falls back to X11.
 - The emulator needs `libbsd`, `libxkbfile`, and `libgl`. The package lists them as optional dependencies.
 - Android Studio keeps a separate cache directory for each release series, for example `~/.cache/Google/AndroidStudio2026.1`. These caches grow to about 2 GB each. When an upgrade installs a new series, the package deletes the cache of the previous one. Your settings stay in place.
 
