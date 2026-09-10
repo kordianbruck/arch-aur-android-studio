@@ -12,8 +12,8 @@
 pkgname=android-studio
 pkgver=2026.1.3.8
 _vername="quail3-patch1"
-_jbrpkgver="21.0.11"
-_jbrvername="b1163.116"
+_jbrpkgver="25.0.2"
+_jbrvername="b329.117"
 pkgrel=1
 pkgdesc="The official Android IDE (Stable branch)"
 arch=('i686' 'x86_64' 'aarch64')
