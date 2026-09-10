@@ -33,7 +33,7 @@ sha256sums=('5bd5ee5d6e747b13f82fba3241380bd358cc2f4a847815c8e860757df13dc35f'
             '9a7563f7fb88c9a83df6cee9731660dc73a039ab594747e9e774916275b2e23e')
 
 source_aarch64=("https://cache-redirector.jetbrains.com/intellij-jbr/jbr_jcef-$_jbrpkgver-linux-aarch64-$_jbrvername.tar.gz")
-sha512sums_aarch64=('c39251cbafdc7a8433ed4b5136500a3530845191bc5568cfc64e199b68c6e457cf973644116dc9beb172a95ef9214d3f3a19ba1bb9dd6f0af2207c2373995d0f')
+sha512sums_aarch64=('fd3792bcba45e0470dffe99523449db3ad8c8e2857d8df3dcd26e05e2f716d70f88a28ab8657b996c03905292ece0f0c6e6cd4558f2965b4462ecd8b1761f4ab')
 
 if [ "$CARCH" = "i686" ]; then
     depends+=('java-environment')
