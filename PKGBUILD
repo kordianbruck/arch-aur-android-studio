@@ -12,9 +12,11 @@
 pkgname=android-studio
 pkgver=2026.1.4.7
 _vername="quail4"
+_jbrpkgver="25.0.2"
+_jbrvername="b329.117"
 pkgrel=1
 pkgdesc="The official Android IDE (Stable branch)"
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://developer.android.com/"
 license=('Apache-2.0')
 depends=('alsa-lib' 'fontconfig' 'freetype2' 'libxrender' 'libxtst' 'which')
@@ -33,13 +35,22 @@ b2sums=('c4f0dfad8eff9b8d0d9f2040dc9f26f2c60f7330226060ec1c9254f3a2ee8a8296c6be9
         '0b978b7fdbcd277cf432080572b141a760ad169984c9cb09f11c6f3ca0be807483545685c86853329bc4622bf516c7a668148bd25ada906fa7289bb9a7c7ccf8'
         '43b288fb81656cd72826a52620e41fbd0daa65d37246cb5b7dbff9c326022eabf18344513517b16134b557d6ae86535f44f863ebd06d6fe0410f92117c1a8c67')
 
+source_aarch64=("https://cache-redirector.jetbrains.com/intellij-jbr/jbr_jcef-$_jbrpkgver-linux-aarch64-$_jbrvername.tar.gz")
+sha512sums_aarch64=('fd3792bcba45e0470dffe99523449db3ad8c8e2857d8df3dcd26e05e2f716d70f88a28ab8657b996c03905292ece0f0c6e6cd4558f2965b4462ecd8b1761f4ab')
+
 package() {
   cd "$srcdir/$pkgname" || exit
 
   # Install the application
   install -d "$pkgdir/opt/$pkgname" "$pkgdir/usr/bin"
-  cp -a bin lib jbr plugins license LICENSE.txt build.txt product-info.json "$pkgdir/opt/$pkgname"
-  ln -s /opt/android-studio/bin/studio "$pkgdir/usr/bin/$pkgname"
+  if [ "$CARCH" = "aarch64" ]; then
+    cp -a bin lib plugins license LICENSE.txt build.txt product-info.json "$pkgdir/opt/$pkgname"
+    mv $srcdir/jbr_jcef-$_jbrpkgver-linux-aarch64-$_jbrvername $pkgdir/opt/$pkgname/jbr
+    ln -s /opt/android-studio/bin/studio.sh "$pkgdir/usr/bin/$pkgname"
+  else
+    cp -a bin lib jbr plugins license LICENSE.txt build.txt product-info.json "$pkgdir/opt/$pkgname"
+    ln -s /opt/android-studio/bin/studio "$pkgdir/usr/bin/$pkgname"
+  fi
 
   # Copy licenses
   install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE.txt"
