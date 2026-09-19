@@ -4,6 +4,7 @@ pkgbase = android-studio
 	pkgrel = 1
 	url = https://developer.android.com/
 	arch = x86_64
+	arch = aarch64
 	license = Apache-2.0
 	depends = alsa-lib
 	depends = fontconfig
@@ -25,5 +26,7 @@ pkgbase = android-studio
 	b2sums = 0c569b7fbd7dc4441eb478a8e1abd1697e50002f15093a0fa900a2288e124e21b7b70325371064f4c262c2f36b2a48ca50cf3b29dd8987fcb435d18e256cb930
 	b2sums = 0b978b7fdbcd277cf432080572b141a760ad169984c9cb09f11c6f3ca0be807483545685c86853329bc4622bf516c7a668148bd25ada906fa7289bb9a7c7ccf8
 	b2sums = 43b288fb81656cd72826a52620e41fbd0daa65d37246cb5b7dbff9c326022eabf18344513517b16134b557d6ae86535f44f863ebd06d6fe0410f92117c1a8c67
+	source_aarch64 = https://cache-redirector.jetbrains.com/intellij-jbr/jbr_jcef-25.0.3-linux-aarch64-b508.16.tar.gz
+	sha512sums_aarch64 = fd3792bcba45e0470dffe99523449db3ad8c8e2857d8df3dcd26e05e2f716d70f88a28ab8657b996c03905292ece0f0c6e6cd4558f2965b4462ecd8b1761f4ab
 
 pkgname = android-studio
